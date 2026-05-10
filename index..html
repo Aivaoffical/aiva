@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AIVA - Afghanistan's First AI Hub</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Sora',sans-serif;
+      background:#050816;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .container{
+      width:90%;
+      max-width:1200px;
+      margin:auto;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      position:fixed;
+      top:0;
+      width:100%;
+      background:rgba(0,0,0,0.7);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+      z-index:1000;
+    }
+
+    .nav-inner{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 0;
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:800;
+      color:#f5b52e;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:20px;
+    }
+
+    .nav-links a{
+      color:#cbd5e1;
+      transition:0.3s;
+    }
+
+    .nav-links a:hover{
+      color:#f5b52e;
+    }
+
+    .btn{
+      background:#f5b52e;
+      color:black;
+      padding:12px 24px;
+      border-radius:8px;
+      font-weight:700;
+      display:inline-block;
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      transform:translateY(-3px);
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero::before{
+      content:'';
+      position:absolute;
+      width:700px;
+      height:700px;
+      background:radial-gradient(circle,#f5b52e22 0%,transparent 70%);
+      top:-200px;
+      left:50%;
+      transform:translateX(-50%);
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+    }
+
+    .badge{
+      display:inline-block;
+      padding:8px 18px;
+      border:1px solid #f5b52e44;
+      background:#f5b52e11;
+      border-radius:100px;
+      color:#f5b52e;
+      margin-bottom:20px;
+      font-size:14px;
+    }
+
+    h1{
+      font-size:72px;
+      line-height:1;
+      margin-bottom:20px;
+    }
+
+    h1 span{
+      color:#f5b52e;
+    }
+
+    .hero p{
+      max-width:700px;
+      margin:auto;
+      color:#94a3b8;
+      line-height:1.8;
+      margin-bottom:40px;
+      font-size:18px;
+    }
+
+    .hero-buttons{
+      display:flex;
+      justify-content:center;
+      gap:15px;
+      flex-wrap:wrap;
+      margin-bottom:50px;
+    }
+
+    .btn-outline{
+      border:1px solid rgba(255,255,255,0.2);
+      padding:12px 24px;
+      border-radius:8px;
+      color:white;
+    }
+
+    /* WORLD MAP */
+
+    .world-map{
+      margin-top:30px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      animation:float 5s ease-in-out infinite;
+    }
+
+    .world-map img{
+      width:100%;
+      max-width:750px;
+      opacity:0.12;
+      filter:brightness(0) invert(1);
+    }
+
+    @keyframes float{
+      0%,100%{
+        transform:translateY(0px);
+      }
+      50%{
+        transform:translateY(-12px);
+      }
+    }
+
+    /* TOOLS */
+
+    .section{
+      padding:100px 0;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title h2{
+      font-size:48px;
+      margin-bottom:10px;
+    }
+
+    .section-title p{
+      color:#94a3b8;
+    }
+
+    .tools-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:20px;
+    }
+
+    .tool-card{
+      background:#0f172a;
+      border:1px solid rgba(255,255,255,0.08);
+      padding:25px;
+      border-radius:18px;
+      transition:0.3s;
+    }
+
+    .tool-card:hover{
+      transform:translateY(-5px);
+      border-color:#f5b52e55;
+    }
+
+    .tool-icon{
+      width:60px;
+      height:60px;
+      border-radius:12px;
+      background:#1e293b;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:28px;
+      margin-bottom:20px;
+    }
+
+    .tool-card h3{
+      margin-bottom:10px;
+      font-size:22px;
+    }
+
+    .tool-card p{
+      color:#94a3b8;
+      line-height:1.7;
+      margin-bottom:20px;
+    }
+
+    /* ABOUT */
+
+    .about{
+      background:#0b1120;
+    }
+
+    .about-content{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:50px;
+      align-items:center;
+    }
+
+    .about-text h2{
+      font-size:48px;
+      margin-bottom:20px;
+    }
+
+    .about-text p{
+      color:#94a3b8;
+      line-height:1.9;
+      margin-bottom:20px;
+    }
+
+    .about-box{
+      background:#111827;
+      padding:30px;
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    /* FOOTER */
+
+    footer{
+      padding:40px 0;
+      text-align:center;
+      border-top:1px solid rgba(255,255,255,0.08);
+      color:#94a3b8;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:768px){
+
+      h1{
+        font-size:48px;
+      }
+
+      .nav-links{
+        display:none;
+      }
+
+      .about-content{
+        grid-template-columns:1fr;
+      }
+
+      .section-title h2{
+        font-size:36px;
+      }
+
+      .world-map img{
+        max-width:100%;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+    <div class="container nav-inner">
+
+      <div class="logo">AIVA</div>
+
+      <div class="nav-links">
+        <a href="#tools">Tools</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <a href="#tools" class="btn">Browse AI Tools</a>
+
+    </div>
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="container hero-content">
+
+      <div class="badge">
+        🇦🇫 Built for Afghans Worldwide
+      </div>
+
+      <h1>
+        All AI,<br>
+        <span>One Place</span>
+      </h1>
+
+      <p>
+        Access ChatGPT, Claude, Gemini, NotebookLM, Kling AI and many more free AI tools in one place.
+        Designed for Afghans everywhere.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#tools" class="btn">Browse Free Tools</a>
+        <a href="#about" class="btn-outline">About AIVA</a>
+      </div>
+
+      <!-- WORLD MAP -->
+
+      <div class="world-map">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg" alt="World Map">
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- TOOLS -->
+
+  <section class="section" id="tools">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Popular AI Tools</h2>
+        <p>All your favorite AI tools in one place</p>
+      </div>
+
+      <div class="tools-grid">
+
+        <div class="tool-card">
+          <div class="tool-icon">🤖</div>
+          <h3>ChatGPT</h3>
+          <p>OpenAI's popular AI assistant for writing, coding, research and more.</p>
+          <a href="https://chat.openai.com" target="_blank" class="btn">Open</a>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-icon">◆</div>
+          <h3>Claude</h3>
+          <p>Powerful AI assistant by Anthropic with advanced reasoning and writing.</p>
+          <a href="https://claude.ai" target="_blank" class="btn">Open</a>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-icon">♊</div>
+          <h3>Gemini</h3>
+          <p>Google AI assistant with internet access and multimodal capabilities.</p>
+          <a href="https://gemini.google.com" target="_blank" class="btn">Open</a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section class="section about" id="about">
+
+    <div class="container about-content">
+
+      <div class="about-text">
+
+        <h2>About AIVA</h2>
+
+        <p>
+          AIVA was created to give Afghans easy access to the world's best AI tools without barriers.
+        </p>
+
+        <p>
+          No downloads. No storage usage. No confusion. Just click and use.
+        </p>
+
+        <a href="#tools" class="btn">Explore Tools</a>
+
+      </div>
+
+      <div class="about-box">
+
+        <h3 style="margin-bottom:20px;">Why AIVA?</h3>
+
+        <p style="margin-bottom:15px;color:#94a3b8;">
+          ✅ Free AI tools
+        </p>
+
+        <p style="margin-bottom:15px;color:#94a3b8;">
+          ✅ Mobile friendly
+        </p>
+
+        <p style="margin-bottom:15px;color:#94a3b8;">
+          ✅ Fast & lightweight
+        </p>
+
+        <p style="color:#94a3b8;">
+          ✅ Built for Afghans worldwide
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer id="contact">
+    <div class="container">
+      © 2026 AIVA — Afghanistan's First AI Hub
+    </div>
+  </footer>
+
+</body>
+</html>
