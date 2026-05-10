@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AIVA Code</title>
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body { background:#04050c; font-family:sans-serif; padding:20px; }
+h1 { color:#f0b830; font-size:22px; margin-bottom:8px; }
+p { color:#7a86a8; font-size:14px; margin-bottom:12px; }
+textarea {
+  width:100%; height:500px;
+  background:#0b0d18; border:3px solid #f0b830;
+  color:#c8d0e8; padding:14px; border-radius:10px;
+  font-size:11px; font-family:monospace; resize:none;
+}
+.box { background:#0b0d18; border:1px solid #1e2338; border-radius:10px; padding:16px; margin-top:14px; }
+.step { font-size:14px; color:#7a86a8; padding:8px 0; border-bottom:1px solid #161928; }
+.step:last-child{border:none;}
+strong { color:#f0b830; }
+</style>
+</head>
+<body>
+<h1>AIVA Code — Ready to Copy</h1>
+<p>Click box → <strong>Ctrl+A</strong> → <strong>Ctrl+C</strong> → paste in GitHub</p>
+<textarea id="t" onclick="this.focus();this.select()">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;/&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;/&gt;
+&lt;title&gt;AIVA — هوش مصنوعی برای هر افغان&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;AIVA — Access Claude, ChatGPT, Gemini and 24+ free AI tools in one place. Built for Afghan communities worldwide.&quot;/&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;/&gt;
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,700;1,600&amp;display=swap&quot; rel=&quot;stylesheet&quot;/&gt;
+&lt;style&gt;
+/* ═══════════════════════════════════════
+   AIVA — Professional Design System
+   Colors: Deep Black + Royal Gold + White
+   Font: Plus Jakarta Sans + Playfair Display
+═══════════════════════════════════════ */
+:root {
+  --bg:       #04050c;
+  --surface:  #07090f;
+  --card:     #0b0d18;
+  --card2:    #0f1120;
+  --border:   #161928;
+  --border2:  #1e2338;
+  --gold:     #c8960a;
+  --goldL:    #f0b830;
+  --goldXL:   #ffd060;
+  --goldD:    #8a6400;
+  --white:    #f0f4ff;
+  --text:     #c8d0e8;
+  --soft:     #7a86a8;
+  --muted:    #3a4260;
+  --green:    #10b87a;
+  --greenBg:  #10b87a12;
+  --greenBd:  #10b87a28;
+  --red:      #e04060;
+  --redBg:    #e0406012;
+  --redBd:    #e0406028;
+  --blue:     #3a7aff;
+  --blueBg:   #3a7aff12;
+  --blueBd:   #3a7aff28;
+  --radius:   16px;
+  --radiusSm: 10px;
+  --shadow:   0 24px 60px rgba(0,0,0,0.5);
+}
+
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+background: var(–bg);
+color: var(–text);
+font-family: 'Plus Jakarta Sans', sans-serif;
+font-size: 15px;
+line-height: 1.6;
+overflow-x: hidden;
+}
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; font-family: inherit; }
+img { max-width: 100%; }
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(–bg); }
+::-webkit-scrollbar-thumb { background: var(–gold)50; border-radius: 3px; }
+::selection { background: var(–gold)25; color: var(–white); }
+
+/* ── BACKGROUND ── */
+.bg-wrap {
+position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+}
+.bg-grid {
+position: absolute; inset: 0;
+background-image:
+linear-gradient(var(–border) 1px, transparent 1px),
+linear-gradient(90deg, var(–border) 1px, transparent 1px);
+background-size: 48px 48px;
+mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 0%, transparent 80%);
+opacity: .6;
+}
+.bg-orb1 {
+position: absolute; top: -200px; left: 50%;
+transform: translateX(-50%);
+width: 900px; height: 600px;
+background: radial-gradient(ellipse, var(–gold)0a 0%, transparent 70%);
+border-radius: 50%;
+animation: breathe 8s ease-in-out infinite;
+}
+.bg-orb2 {
+position: absolute; bottom: 0; right: -100px;
+width: 500px; height: 500px;
+background: radial-gradient(circle, var(–blue)06 0%, transparent 70%);
+border-radius: 50%;
+animation: breathe 12s ease-in-out 3s infinite;
+}
+.bg-line {
+position: absolute; top: 0; left: 50%; width: 1px; height: 40%;
+background: linear-gradient(to bottom, var(–gold)30, transparent);
+transform: translateX(-50%);
+}
+@keyframes breathe { 0%,100%{opacity:.5;transform:translateX(-50%) scale(1)} 50%{opacity:1;transform:translateX(-50%) scale(1.05)} }
+
+/* ── LANGUAGE SWITCHER ── */
+.lang-bar {
+position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+background: var(–surface);
+border-bottom: 1px solid var(–border);
+padding: 0 clamp(1rem,4vw,3rem);
+height: 36px;
+display: flex; align-items: center; justify-content: space-between;
+}
+.lang-bar-left {
+font-size: 12px; color: var(–muted); font-weight: 500; letter-spacing: .5px;
+}
+.lang-bar-left span { color: var(–gold); }
+.lang-btns { display: flex; gap: 4px; }
+.lang-btn {
+background: transparent; border: 1px solid transparent;
+color: var(–soft); padding: 3px 12px; border-radius: 6px;
+font-size: 12px; font-weight: 600; letter-spacing: .5px;
+transition: all .2s;
+}
+.lang-btn.active {
+background: var(–gold)15; border-color: var(–gold)40; color: var(–goldL);
+}
+.lang-btn:hover:not(.active) { color: var(–text); border-color: var(–border2); }
+
+/* ── NAV ── */
+nav {
+position: fixed; top: 36px; left: 0; right: 0; z-index: 100;
+padding: 0 clamp(1rem,4vw,3rem);
+transition: all .3s ease;
+}
+nav.scrolled {
+background: rgba(4,5,12,.96);
+backdrop-filter: blur(24px);
+border-bottom: 1px solid var(–border);
+box-shadow: 0 4px 40px rgba(0,0,0,.4);
+}
+.nav-inner {
+max-width: 1280px; margin: 0 auto;
+display: flex; align-items: center; justify-content: space-between;
+height: 70px;
+}
+.logo { display: flex; align-items: center; gap: 14px; }
+.logo-mark {
+width: 44px; height: 44px; border-radius: 12px;
+background: linear-gradient(135deg, var(–gold), var(–goldD));
+display: flex; align-items: center; justify-content: center;
+box-shadow: 0 0 0 1px var(–gold)30, 0 8px 32px var(–gold)25;
+flex-shrink: 0;
+}
+.logo-mark-text {
+font-size: 18px; font-weight: 800; color: #04050c;
+font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: -1px;
+}
+.logo-text-wrap { line-height: 1; }
+.logo-name {
+font-size: 22px; font-weight: 800; color: var(–white);
+letter-spacing: -0.5px;
+}
+.logo-name span { color: var(–goldL); }
+.logo-tagline { font-size: 11px; color: var(–muted); letter-spacing: 2px; margin-top: 2px; }
+.nav-links { display: flex; align-items: center; gap: 2px; }
+.nav-link {
+background: transparent; border: none;
+color: var(–soft); padding: 8px 16px; border-radius: 8px;
+font-size: 14px; font-weight: 500;
+transition: all .2s; white-space: nowrap;
+}
+.nav-link:hover { color: var(–text); background: var(–card); }
+.nav-cta {
+background: linear-gradient(135deg, var(–gold), var(–goldD));
+color: #04050c; padding: 10px 24px; border-radius: 10px;
+font-size: 14px; font-weight: 700; border: none;
+box-shadow: 0 4px 24px var(–gold)35;
+transition: all .25s; white-space: nowrap; margin-left: 8px;
+}
+.nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 32px var(–gold)50; }
+.hamburger { display: none; background: none; border: none; color: var(–text); font-size: 22px; }
+
+/* ── HERO ── */
+.hero {
+min-height: 100vh; display: flex; flex-direction: column;
+align-items: center; justify-content: center;
+padding: 180px clamp(1rem,4vw,3rem) 100px;
+text-align: center; position: relative; z-index: 1;
+}
+.hero-badge {
+display: inline-flex; align-items: center; gap: 10px;
+background: var(–gold)0f; border: 1px solid var(–gold)30;
+border-radius: 100px; padding: 8px 22px; margin-bottom: 36px;
+animation: fadeUp .7s ease both;
+}
+.hero-badge-dot {
+width: 6px; height: 6px; border-radius: 50%;
+background: var(–green); animation: pulse 2s infinite;
+}
+.hero-badge-text { font-size: 13px; color: var(–goldL); font-weight: 600; letter-spacing: .5px; }
+.hero-title {
+font-family: 'Playfair Display', serif;
+font-size: clamp(52px, 9vw, 110px);
+font-weight: 700; line-height: 1.0;
+color: var(–white); margin-bottom: 8px;
+animation: fadeUp .8s ease .06s both;
+letter-spacing: -2px;
+}
+.hero-title-accent {
+font-style: italic; color: var(–goldL);
+background: linear-gradient(90deg, var(–gold), var(–goldXL), var(–gold));
+background-size: 200%; -webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+animation: fadeUp .8s ease .06s both, shimmer 4s linear infinite;
+}
+.hero-dari {
+font-size: clamp(16px,2.5vw,22px); color: var(–gold);
+font-weight: 300; margin-bottom: 28px; letter-spacing: 3px;
+animation: fadeUp .8s ease .1s both; opacity: .8;
+}
+.hero-sub {
+font-size: clamp(16px,2vw,19px); color: var(–soft);
+max-width: 580px; line-height: 1.85; font-weight: 300;
+margin-bottom: 52px; animation: fadeUp .8s ease .14s both;
+}
+.hero-sub strong { color: var(–text); font-weight: 600; }
+.hero-actions {
+display: flex; gap: 14px; flex-wrap: wrap;
+justify-content: center; margin-bottom: 80px;
+animation: fadeUp .8s ease .18s both;
+}
+.btn-gold {
+background: linear-gradient(135deg, var(–gold), var(–goldD));
+color: #04050c; border: none; padding: 16px 44px;
+border-radius: 12px; font-size: 16px; font-weight: 700;
+font-family: inherit; box-shadow: 0 8px 36px var(–gold)40;
+transition: all .3s; white-space: nowrap;
+}
+.btn-gold:hover { transform: translateY(-3px); box-shadow: 0 14px 48px var(–gold)55; }
+.btn-outline {
+background: transparent; color: var(–text);
+border: 1px solid var(–border2); padding: 16px 44px;
+border-radius: 12px; font-size: 16px; font-weight: 500;
+font-family: inherit; transition: all .3s; white-space: nowrap;
+}
+.btn-outline:hover { border-color: var(–gold)60; color: var(–goldL); background: var(–gold)06; }
+
+/* ── STATS ── */
+.hero-stats {
+display: flex; flex-wrap: wrap; justify-content: center;
+animation: fadeUp .8s ease .22s both;
+border: 1px solid var(–border2); border-radius: 20px;
+overflow: hidden; background: var(–card);
+}
+.stat-item {
+padding: 24px 44px; text-align: center;
+border-right: 1px solid var(–border2);
+}
+.stat-item:last-child { border-right: none; }
+.stat-n {
+font-family: 'Playfair Display', serif;
+font-size: 42px; color: var(–goldL); line-height: 1; font-weight: 700;
+}
+.stat-l {
+font-size: 11px; color: var(–muted); letter-spacing: 2px;
+text-transform: uppercase; margin-top: 6px; font-weight: 600;
+}
+
+/* ── SECTION ── */
+.section { position: relative; z-index: 1; }
+.section-inner {
+max-width: 1280px; margin: 0 auto;
+padding: 90px clamp(1rem,4vw,3rem);
+}
+.section-header { margin-bottom: 52px; }
+.section-eyebrow {
+display: inline-flex; align-items: center; gap: 8px;
+font-size: 12px; color: var(–gold); font-weight: 700;
+letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px;
+}
+.section-eyebrow::before {
+content: ''; width: 24px; height: 1px; background: var(–gold);
+}
+.section-title {
+font-family: 'Playfair Display', serif;
+font-size: clamp(30px, 4.5vw, 52px);
+color: var(–white); font-weight: 700; margin-bottom: 16px;
+letter-spacing: -1px;
+}
+.section-sub {
+font-size: 17px; color: var(–soft); font-weight: 300;
+max-width: 520px; line-height: 1.8;
+}
+
+/* ── SEARCH + FILTER ── */
+.tools-controls { margin-bottom: 40px; }
+.search-box {
+position: relative; margin-bottom: 20px; max-width: 440px;
+}
+.search-icon-el {
+position: absolute; left: 18px; top: 50%; transform: translateY(-50%);
+color: var(–muted); font-size: 16px; pointer-events: none;
+}
+.search-input {
+width: 100%; background: var(–card);
+border: 1px solid var(–border2); border-radius: 12px;
+color: var(–text); padding: 14px 18px 14px 48px;
+font-family: inherit; font-size: 15px; outline: none;
+transition: border-color .2s, box-shadow .2s;
+}
+.search-input::placeholder { color: var(–muted); }
+.search-input:focus {
+border-color: var(–gold)60;
+box-shadow: 0 0 0 3px var(–gold)10;
+}
+.filter-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.filter-btn {
+background: transparent; border: 1px solid var(–border2);
+color: var(–soft); padding: 8px 18px; border-radius: 100px;
+font-size: 13px; font-weight: 600; font-family: inherit;
+transition: all .2s; letter-spacing: .3px;
+}
+.filter-btn:hover { color: var(–text); border-color: var(–border2); background: var(–card2); }
+.filter-btn.active {
+background: var(–gold); color: #04050c;
+border-color: var(–gold); font-weight: 700;
+}
+
+/* ── TOOL CARDS ── */
+.tools-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+gap: 16px;
+}
+.tool-card {
+background: var(–card); border: 1px solid var(–border2);
+border-radius: var(–radius); padding: 24px;
+display: flex; flex-direction: column;
+transition: all .3s ease; position: relative; overflow: hidden;
+cursor: pointer;
+}
+.tool-card::after {
+content: ''; position: absolute;
+top: 0; left: 0; right: 0; height: 2px;
+background: linear-gradient(90deg, var(–ac, var(–gold)), transparent);
+opacity: 0; transition: opacity .3s;
+}
+.tool-card:hover {
+border-color: var(–ac, var(–gold))50;
+transform: translateY(-4px);
+box-shadow: 0 20px 50px rgba(0,0,0,.4), 0 0 0 1px var(–ac, var(–gold))20;
+background: var(–card2);
+}
+.tool-card:hover::after { opacity: 1; }
+.card-top {
+display: flex; align-items: flex-start;
+justify-content: space-between; margin-bottom: 18px;
+}
+.card-icon {
+width: 50px; height: 50px; border-radius: 13px;
+display: flex; align-items: center; justify-content: center;
+font-size: 24px; flex-shrink: 0;
+border: 1px solid rgba(255,255,255,.06);
+}
+.card-badge {
+font-size: 10px; font-weight: 700; padding: 4px 10px;
+border-radius: 20px; letter-spacing: 1px; text-transform: uppercase;
+white-space: nowrap;
+}
+.badge-free { background: var(–greenBg); color: var(–green); border: 1px solid var(–greenBd); }
+.badge-freemium { background: var(–gold)12; color: var(–goldL); border: 1px solid var(–gold)28; }
+.badge-paid { background: var(–redBg); color: var(–red); border: 1px solid var(–redBd); }
+.card-name {
+font-size: 17px; font-weight: 700; color: var(–white);
+margin-bottom: 3px; letter-spacing: -.3px;
+}
+.card-maker { font-size: 12px; color: var(–muted); font-weight: 500; margin-bottom: 12px; }
+.card-desc { font-size: 13px; color: var(–soft); line-height: 1.75; flex: 1; margin-bottom: 18px; }
+.card-footer { display: flex; align-items: center; justify-content: space-between; }
+.card-tag {
+font-size: 11px; font-weight: 600; padding: 4px 10px;
+border-radius: 20px; letter-spacing: .5px;
+}
+.card-open {
+display: flex; align-items: center; gap: 6px;
+font-size: 13px; font-weight: 600; color: var(–soft);
+transition: all .2s;
+}
+.tool-card:hover .card-open { color: var(–white); }
+.card-arrow { transition: transform .2s; }
+.tool-card:hover .card-arrow { transform: translateX(4px); }
+
+/* ── DIVIDER ── */
+.divider {
+border: none; border-top: 1px solid var(–border);
+margin: 0; position: relative; z-index: 1;
+}
+
+/* ── HOW IT WORKS ── */
+.how-grid {
+display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+gap: 20px;
+}
+.how-card {
+background: var(–card); border: 1px solid var(–border2);
+border-radius: var(–radius); padding: 32px 26px;
+position: relative; overflow: hidden;
+}
+.how-card::before {
+content: attr(data-n);
+position: absolute; bottom: -10px; right: 10px;
+font-family: 'Playfair Display', serif;
+font-size: 80px; font-weight: 700; color: var(–border2);
+line-height: 1; pointer-events: none;
+}
+.how-icon { font-size: 32px; margin-bottom: 20px; }
+.how-title { font-size: 17px; font-weight: 700; color: var(–white); margin-bottom: 10px; }
+.how-desc { font-size: 14px; color: var(–soft); line-height: 1.8; }
+
+/* ── EARN CARDS ── */
+.earn-grid {
+display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+gap: 16px; margin-bottom: 40px;
+}
+.earn-card {
+background: var(–card); border: 1px solid var(–border2);
+border-radius: var(–radius); padding: 28px 24px;
+position: relative;
+}
+.earn-top-bar {
+height: 3px; border-radius: 2px; margin-bottom: 24px;
+background: linear-gradient(90deg, var(–gold), var(–goldD));
+}
+.earn-icon { font-size: 28px; margin-bottom: 14px; }
+.earn-title { font-size: 17px; font-weight: 700; color: var(–white); margin-bottom: 8px; }
+.earn-desc { font-size: 13px; color: var(–soft); line-height: 1.8; margin-bottom: 14px; }
+.earn-amount {
+font-family: 'Playfair Display', serif;
+font-size: 18px; color: var(–goldL); font-weight: 700;
+}
+
+/* ── REVENUE TABLE ── */
+.rev-table-wrap {
+background: var(–card); border: 1px solid var(–border2);
+border-radius: var(–radius); overflow: hidden;
+}
+.rev-table-head {
+padding: 20px 28px; border-bottom: 1px solid var(–border2);
+display: flex; align-items: center; justify-content: space-between;
+}
+.rev-table-title { font-size: 17px; font-weight: 700; color: var(–white); }
+table { width: 100%; border-collapse: collapse; }
+th {
+padding: 14px 20px; text-align: left;
+font-size: 11px; color: var(–gold); font-weight: 700;
+letter-spacing: 1.5px; text-transform: uppercase;
+background: var(–surface); border-bottom: 1px solid var(–border2);
+}
+td { padding: 16px 20px; font-size: 14px; border-bottom: 1px solid var(–border); }
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) td { background: var(–surface)80; }
+.td-period { color: var(–text); font-weight: 500; }
+.td-muted { color: var(–muted); }
+.td-earn { font-weight: 700; }
+
+/* ── LAUNCH STEPS ── */
+.steps-wrap { display: flex; flex-direction: column; gap: 14px; }
+.step-card {
+background: var(–card); border: 1px solid var(–border2);
+border-radius: var(–radius); padding: 24px 28px;
+display: flex; align-items: flex-start; gap: 22px;
+transition: border-color .2s;
+}
+.step-card:hover { border-color: var(–gold)40; }
+.step-n {
+font-family: 'Playfair Display', serif;
+font-size: 40px; color: var(–gold)25; line-height: 1;
+flex-shrink: 0; min-width: 44px; font-weight: 700;
+}
+.step-line { height: 3px; width: 40px; border-radius: 2px; margin-bottom: 12px; }
+.step-title { font-size: 17px; font-weight: 700; color: var(–white); margin-bottom: 8px; }
+.step-desc { font-size: 14px; color: var(–soft); line-height: 1.8; }
+.step-desc a { color: var(–goldL); font-weight: 600; }
+.step-desc a:hover { text-decoration: underline; }
+.step-pill {
+display: inline-block; margin-top: 10px;
+background: var(–greenBg); color: var(–green);
+border: 1px solid var(–greenBd);
+padding: 3px 12px; border-radius: 20px;
+font-size: 12px; font-weight: 700;
+}
+
+/* ── FOOTER ── */
+footer {
+background: var(–surface); border-top: 1px solid var(–border);
+padding: 60px clamp(1rem,4vw,3rem) 32px;
+position: relative; z-index: 1;
+}
+.footer-inner { max-width: 1280px; margin: 0 auto; }
+.footer-top {
+display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr;
+gap: 40px; margin-bottom: 52px;
+}
+.footer-brand-desc { font-size: 14px; color: var(–muted); line-height: 1.9; margin-top: 18px; max-width: 280px; }
+.footer-dari { font-size: 16px; color: var(–gold)80; margin-top: 14px; letter-spacing: 1px; }
+.footer-flags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 14px; font-size: 22px; }
+.footer-col-title {
+font-size: 11px; color: var(–gold); font-weight: 700;
+letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px;
+}
+.footer-link {
+display: block; font-size: 14px; color: var(–muted);
+margin-bottom: 10px; transition: color .2s; font-weight: 400;
+}
+.footer-link:hover { color: var(–goldL); }
+.footer-bottom {
+border-top: 1px solid var(–border); padding-top: 24px;
+display: flex; justify-content: space-between;
+align-items: center; flex-wrap: wrap; gap: 12px;
+}
+.footer-copy { font-size: 13px; color: var(–muted); }
+.footer-love { font-size: 13px; color: var(–muted); }
+.footer-love span { color: var(–gold); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.85)} }
+@keyframes shimmer { from{background-position:-200% center} to{background-position:200% center} }
+.fade-up { opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+.fade-up.show { opacity:1; transform:translateY(0); }
+
+/* ── DARK SECTION ── */
+.section-dark { background: var(–surface); border-top: 1px solid var(–border); border-bottom: 1px solid var(–border); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+.footer-top { grid-template-columns: 1fr 1fr; }
+.nav-links { display: none; }
+.hamburger { display: block; }
+}
+@media (max-width: 600px) {
+.stat-item { padding: 18px 24px; }
+.stat-n { font-size: 32px; }
+.hero-actions { flex-direction: column; align-items: stretch; }
+.btn-gold, .btn-outline { text-align: center; }
+.footer-top { grid-template-columns: 1fr; }
+.step-card { flex-direction: column; gap: 8px; }
+}
+
+/* ── NO RESULTS ── */
+.no-results {
+grid-column: 1/-1; text-align: center; padding: 80px 20px;
+color: var(–muted);
+}
+.no-results-icon { font-size: 48px; margin-bottom: 16px; }
+.no-results-text { font-size: 18px; font-weight: 600; color: var(–soft); margin-bottom: 8px; }
+.no-results-sub { font-size: 14px; }
+</style>
+</head>
+<body>
+
+<!– BG –>
+<div class="bg-wrap">
+<div class="bg-grid"></div>
+<div class="bg-orb1"></div>
+<div class="bg-orb2"></div>
+<div class="bg-line"></div>
+</div>
+
+<!– LANGUAGE BAR –>
+<div class="lang-bar">
+<div class="lang-bar-left" id="langBarText">🇦🇫 Built for <span>Afghan communities</span> worldwide</div>
+<div class="lang-btns">
+<button class="lang-btn active" onclick="setLang('en')">EN</button>
+<button class="lang-btn" onclick="setLang('fa')">دری</button>
+<button class="lang-btn" onclick="setLang('ps')">پښتو</button>
+</div>
+</div>
+
+<!– NAV –>
+<nav id="navbar">
+<div class="nav-inner">
+<a class="logo" href="#top">
+<div class="logo-mark"><span class="logo-mark-text">AI</span></div>
+<div class="logo-text-wrap">
+<div class="logo-name">AI<span>VA</span></div>
+<div class="logo-tagline" id="navTagline">هوش مصنوعی برای هر افغان</div>
+</div>
+</a>
+<div class="nav-links" id="navLinks">
+<button class="nav-link" onclick="scrollTo('tools')" id="nl1">All Tools</button>
+<button class="nav-link" onclick="scrollTo('how')" id="nl2">How It Works</button>
+<button class="nav-link" onclick="scrollTo('earn')" id="nl3">Earn Money</button>
+<button class="nav-link" onclick="scrollTo('launch')" id="nl4">Launch Free</button>
+</div>
+<button class="nav-cta" id="navCta" onclick="scrollTo('tools')">Browse Free Tools →</button>
+<button class="hamburger" onclick="toggleMenu()">☰</button>
+</div>
+</nav>
+
+<!– HERO –>
+<div class="hero" id="top">
+<div class="hero-badge">
+<div class="hero-badge-dot"></div>
+<span class="hero-badge-text" id="heroBadge">🇦🇫 Free AI Tools for Afghan Communities</span>
+</div>
+<h1 class="hero-title">
+<span id="heroLine1">All AI,</span><br/>
+<span class="hero-title-accent" id="heroLine2">One Place</span>
+</h1>
+<div class="hero-dari" id="heroDari">Claude · Gemini · ChatGPT · و بیشتر</div>
+<p class="hero-sub" id="heroSub">
+Click any AI tool — go directly to its <strong>free version</strong>.
+No account needed here. No payment. Just pick your AI and start — in Dari, Pashto or English.
+</p>
+<div class="hero-actions">
+<button class="btn-gold" onclick="scrollTo('tools')" id="heroCta1">Browse All Free Tools →</button>
+<button class="btn-outline" onclick="scrollTo('how')" id="heroCta2">How It Works</button>
+</div>
+<div class="hero-stats">
+<div class="stat-item">
+<div class="stat-n">26</div>
+<div class="stat-l" id="stat1">Free AI Tools</div>
+</div>
+<div class="stat-item">
+<div class="stat-n">$0</div>
+<div class="stat-l" id="stat2">To Use</div>
+</div>
+<div class="stat-item">
+<div class="stat-n">3</div>
+<div class="stat-l" id="stat3">Languages</div>
+</div>
+<div class="stat-item">
+<div class="stat-n">50M+</div>
+<div class="stat-l" id="stat4">Afghan Speakers</div>
+</div>
+</div>
+</div>
+
+<!– TOOLS SECTION –>
+<section class="section" id="tools">
+<div class="section-inner">
+<div class="section-header">
+<div class="section-eyebrow" id="toolsEyebrow">26 Free Tools</div>
+<h2 class="section-title" id="toolsTitle">Every Free AI Tool</h2>
+<p class="section-sub" id="toolsSub">Click any card — opens the tool directly in a new tab. Free versions always shown first.</p>
+</div>
+<div class="tools-controls">
+<div class="search-box">
+<span class="search-icon-el">🔍</span>
+<input class="search-input" id="searchInput" placeholder="Search AI tools…" oninput="renderTools()"/>
+</div>
+<div class="filter-row" id="filterRow">
+<button class="filter-btn active" onclick="setFilter(this,'all')" id="f0">All</button>
+<button class="filter-btn" onclick="setFilter(this,'chat')" id="f1">💬 Chat AI</button>
+<button class="filter-btn" onclick="setFilter(this,'image')" id="f2">🎨 Image AI</button>
+<button class="filter-btn" onclick="setFilter(this,'write')" id="f3">✍️ Writing</button>
+<button class="filter-btn" onclick="setFilter(this,'code')" id="f4">💻 Coding</button>
+<button class="filter-btn" onclick="setFilter(this,'video')" id="f5">🎬 Video</button>
+<button class="filter-btn" onclick="setFilter(this,'voice')" id="f6">🎵 Music & Voice</button>
+<button class="filter-btn" onclick="setFilter(this,'research')" id="f7">🔬 Research</button>
+</div>
+</div>
+<div class="tools-grid" id="toolsGrid"></div>
+</div>
+</section>
+
+<hr class="divider"/>
+
+<!– HOW IT WORKS –>
+<section class="section section-dark" id="how">
+<div class="section-inner">
+<div class="section-header">
+<div class="section-eyebrow" id="howEyebrow">Simple Process</div>
+<h2 class="section-title" id="howTitle">How AIVA Works</h2>
+<p class="section-sub" id="howSub">Three steps. No technical knowledge needed.</p>
+</div>
+<div class="how-grid">
+<div class="how-card fade-up" data-n="1">
+<div class="how-icon">🌐</div>
+<div class="how-title" id="how1t">Visit AIVA</div>
+<div class="how-desc" id="how1d">Come to AIVA — your one-stop directory for every free AI tool available online. Bookmark it as your AI home base.</div>
+</div>
+<div class="how-card fade-up" data-n="2">
+<div class="how-icon">🔍</div>
+<div class="how-title" id="how2t">Find Your Tool</div>
+<div class="how-desc" id="how2d">Browse by category or search by name. Filter by Chat AI, Image AI, Writing, Coding, Video and more.</div>
+</div>
+<div class="how-card fade-up" data-n="3">
+<div class="how-icon">🚀</div>
+<div class="how-title" id="how3t">Click & Use Free</div>
+<div class="how-desc" id="how3d">Click any card — opens Claude, ChatGPT, Gemini or any other tool directly in a new tab. Use the free version instantly.</div>
+</div>
+<div class="how-card fade-up" data-n="4">
+<div class="how-icon">🔖</div>
+<div class="how-title" id="how4t">Come Back</div>
+<div class="how-desc" id="how4d">We update the list weekly with new AI tools. Bookmark AIVA — new tools added every week so you never miss anything.</div>
+</div>
+</div>
+</div>
+</section>
+
+<hr class="divider"/>
+
+<!– EARN –>
+<section class="section" id="earn">
+<div class="section-inner">
+<div class="section-header">
+<div class="section-eyebrow" id="earnEyebrow">For Site Owner</div>
+<h2 class="section-title" id="earnTitle">How You Earn Money</h2>
+<p class="section-sub" id="earnSub">You don't build AI. You just connect people to it. Here's how the money flows.</p>
+</div>
+<div class="earn-grid">
+<div class="earn-card fade-up">
+<div class="earn-top-bar"></div>
+<div class="earn-icon">📢</div>
+<div class="earn-title" id="e1t">Google AdSense</div>
+<div class="earn-desc" id="e1d">Show ads on your directory. Every visitor earns you money automatically. Apply once you have 50+ daily visitors. No effort after setup.</div>
+<div class="earn-amount">$2–8 per 1,000 visitors</div>
+</div>
+<div class="earn-card fade-up" style="–earn-clr:var(–green)">
+<div class="earn-top-bar" style="background:linear-gradient(90deg,var(–green),var(–greenD,#006a3a))"></div>
+<div class="earn-icon">🔗</div>
+<div class="earn-title" id="e2t">Affiliate Links</div>
+<div class="earn-desc" id="e2d">When a visitor upgrades to Claude Pro, ChatGPT Plus, or Canva Pro through your link — you earn commission automatically.</div>
+<div class="earn-amount">$10–50 per paid signup</div>
+</div>
+<div class="earn-card fade-up">
+<div class="earn-top-bar" style="background:linear-gradient(90deg,var(–blue),#1a4aaa)"></div>
+<div class="earn-icon">⭐</div>
+<div class="earn-title" id="e3t">Featured Listings</div>
+<div class="earn-desc" id="e3d">AI companies pay to be featured at the top of your directory. This income grows as your traffic grows. Start outreach at 5,000 visitors.</div>
+<div class="earn-amount">$50–500/mo per sponsor</div>
+</div>
+<div class="earn-card fade-up">
+<div class="earn-top-bar" style="background:linear-gradient(90deg,#a855f7,#6030a0)"></div>
+<div class="earn-icon">📧</div>
+<div class="earn-title" id="e4t">Newsletter</div>
+<div class="earn-desc" id="e4d">Collect emails. Send a weekly "Best New AI Tools" newsletter. Sell newsletter sponsorships to AI companies at scale.</div>
+<div class="earn-amount">$100–2,000/mo at scale</div>
+</div>
+</div>
+<!– Revenue Table –>
+<div class="rev-table-wrap fade-up">
+<div class="rev-table-head">
+<div class="rev-table-title" id="revTitle">📊 Realistic Revenue Timeline</div>
+<div style="font-size:13px;color:var(–muted)" id="revNote">Conservative estimates</div>
+</div>
+<div style="overflow-x:auto">
+<table>
+<thead>
+<tr>
+<th id="th1">Period</th>
+<th id="th2">Visitors/Month</th>
+<th id="th3">AdSense</th>
+<th id="th4">Affiliates</th>
+<th id="th5">Total/Month</th>
+</tr>
+</thead>
+<tbody id="revBody"></tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+
+<hr class="divider"/>
+
+<!– LAUNCH –>
+<section class="section section-dark" id="launch">
+<div class="section-inner">
+<div class="section-header">
+<div class="section-eyebrow" id="launchEyebrow">Zero Investment</div>
+<h2 class="section-title" id="launchTitle">Go Live This Weekend — Free</h2>
+<p class="section-sub" id="launchSub">This file IS your complete website. Here is how to put it online for $0.</p>
+</div>
+<div class="steps-wrap" id="stepsWrap"></div>
+</div>
+</section>
+
+<!– FOOTER –>
+<footer>
+<div class="footer-inner">
+<div class="footer-top">
+<div>
+<a class="logo" href="#top">
+<div class="logo-mark"><span class="logo-mark-text">AI</span></div>
+<div class="logo-text-wrap">
+<div class="logo-name">AI<span>VA</span></div>
+<div class="logo-tagline">هوش مصنوعی برای هر افغان</div>
+</div>
+</a>
+<p class="footer-brand-desc" id="footerDesc">Free AI tools directory for Afghan communities worldwide. All tools in one place — Dari, Pashto & English.</p>
+<div class="footer-dari" id="footerDari">وا — هوش مصنوعی برای همه ❤️</div>
+<div class="footer-flags">🇦🇫 🇵🇰 🇮🇷 🇩🇪 🇺🇸 🇬🇧 🇨🇦 🇦🇺</div>
+</div>
+<div>
+<div class="footer-col-title" id="fc1">Categories</div>
+<a class="footer-link" href="#tools">💬 Chat AI</a>
+<a class="footer-link" href="#tools">🎨 Image AI</a>
+<a class="footer-link" href="#tools">✍️ Writing</a>
+<a class="footer-link" href="#tools">💻 Coding</a>
+<a class="footer-link" href="#tools">🎬 Video</a>
+<a class="footer-link" href="#tools">🎵 Music & Voice</a>
+</div>
+<div>
+<div class="footer-col-title" id="fc2">For Owners</div>
+<a class="footer-link" href="#earn">How to Earn</a>
+<a class="footer-link" href="#launch">Launch Guide</a>
+<a class="footer-link" href="https://adsense.google.com" target="_blank">Google AdSense</a>
+<a class="footer-link" href="https://github.com" target="_blank">Free Hosting</a>
+<a class="footer-link" href="https://vercel.com" target="_blank">Vercel (Better)</a>
+</div>
+<div>
+<div class="footer-col-title" id="fc3">Top AI Tools</div>
+<a class="footer-link" href="https://claude.ai" target="_blank">Claude</a>
+<a class="footer-link" href="https://chat.openai.com" target="_blank">ChatGPT</a>
+<a class="footer-link" href="https://gemini.google.com" target="_blank">Gemini</a>
+<a class="footer-link" href="https://copilot.microsoft.com" target="_blank">Copilot</a>
+<a class="footer-link" href="https://www.perplexity.ai" target="_blank">Perplexity</a>
+</div>
+</div>
+<div class="footer-bottom">
+<div class="footer-copy" id="footerCopy">© 2025 AIVA · Free forever · د افغان ولس خدمت ته</div>
+<div class="footer-love" id="footerLove">Made with <span>❤️</span> for 50M+ Afghan speakers</div>
+</div>
+</div>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════════════
+AIVA — Complete JavaScript
+• 26 AI Tools
+• 3 Languages (English, Dari, Pashto)
+• Search + Filter
+• Scroll animations
+• Revenue table
+• Launch steps
+═══════════════════════════════════════════════════ */
+
+// ── TOOLS DATA ─────────────────────────────────────
+const TOOLS = [
+// CHAT
+{name:"Claude",       maker:"Anthropic",     cat:"chat",    icon:"◆",  bg:"#1a0828", ic:"#c084fc", badge:"freemium", bl:"Free + Paid", desc:{en:"Most intelligent AI for writing, analysis & coding. Free tier with daily message limit.",fa:"هوشمندترین هوش مصنوعی برای نوشتن، تحلیل و کدنویسی. نسخه رایگان با محدودیت روزانه.",ps:"د لیکلو، تحلیل او کوډنویسۍ لپاره هوشمندترین هوش مصنوعي. وړیا نسخه."}, tag:"Best Quality", url:"https://claude.ai"},
+{name:"ChatGPT",      maker:"OpenAI",        cat:"chat",    icon:"◉",  bg:"#001a0f", ic:"#10a37f", badge:"freemium", bl:"Free + Paid", desc:{en:"World's most popular AI. GPT-4o mini free. Excellent for almost any task you can think of.",fa:"محبوب‌ترین هوش مصنوعی جهان. GPT-4o رایگان. برای تقریباً هر کاری عالی است.",ps:"د نړۍ ترټولو مشهور هوش مصنوعي. GPT-4o وړیا. تقریباً د هر کار لپاره ښه."}, tag:"Most Popular", url:"https://chat.openai.com"},
+{name:"Gemini",       maker:"Google",        cat:"chat",    icon:"♊",  bg:"#001428", ic:"#4a8aff", badge:"free",     bl:"Free",        desc:{en:"Google's powerful AI. Free with any Google account. Has real-time internet access for current info.",fa:"هوش مصنوعی قدرتمند گوگل. با حساب گوگل رایگان. دسترسی به اینترنت در زمان واقعی.",ps:"د ګوګل قوي هوش مصنوعي. د ګوګل اکاونټ سره وړیا. د انټرنټ سره ریال-ټایم لاسرسی."}, tag:"Has Internet", url:"https://gemini.google.com"},
+{name:"Copilot",      maker:"Microsoft",     cat:"chat",    icon:"🪟",  bg:"#000f28", ic:"#0078d4", badge:"free",     bl:"Free",        desc:{en:"Microsoft's AI powered by GPT-4. Completely free with Microsoft account. Integrated with Bing.",fa:"هوش مصنوعی مایکروسافت با GPT-4. کاملاً رایگان با حساب مایکروسافت.",ps:"د مایکروسافټ هوش مصنوعي د GPT-4 سره. د مایکروسافټ اکاونټ سره بالکل وړیا."}, tag:"Free GPT-4", url:"https://copilot.microsoft.com"},
+{name:"Grok",         maker:"xAI / X",       cat:"chat",    icon:"✦",  bg:"#0a0a0a", ic:"#e0e0e0", badge:"freemium", bl:"Free on X",   desc:{en:"Elon Musk's AI. Free on X (Twitter). Real-time internet access. Fewer restrictions than others.",fa:"هوش مصنوعی ایلان ماسک. در X رایگان. دسترسی به اینترنت واقعی. محدودیت کمتر.",ps:"د ایلان ماسک هوش مصنوعي. X کې وړیا. ریال-ټایم انټرنټ. لږ محدودیتونه."}, tag:"Real-time", url:"https://x.com/i/grok"},
+{name:"Meta AI",      maker:"Meta",          cat:"chat",    icon:"∞",  bg:"#001a28", ic:"#0082fb", badge:"free",     bl:"Free",        desc:{en:"Meta's free AI. Available inside WhatsApp, Instagram and Facebook. No separate app needed.",fa:"هوش مصنوعی رایگان متا. در واتس‌اپ، اینستاگرام و فیسبوک موجود است.",ps:"د میټا وړیا هوش مصنوعي. د واټسپ، انسټاګرام او فیسبوک دننه شتون لري."}, tag:"On WhatsApp", url:"https://www.meta.ai"},
+{name:"Mistral",      maker:"Mistral AI",    cat:"chat",    icon:"🌀",  bg:"#0a0018", ic:"#7c3aed", badge:"free",     bl:"Free",        desc:{en:"European AI alternative. Strong multilingual support. Privacy-friendly. Free to use with no limits.",fa:"جایگزین هوش مصنوعی اروپایی. پشتیبانی چندزبانه قوی. رایگان.",ps:"د اروپا هوش مصنوعي. قوي ملټي لینګوال ملاتړ. د محرمیت دوستانه. وړیا."}, tag:"Multilingual", url:"https://chat.mistral.ai"},
+{name:"Perplexity",   maker:"Perplexity AI", cat:"research",icon:"🔬", bg:"#001428", ic:"#00c8e0", badge:"freemium", bl:"Free + Paid", desc:{en:"AI search engine with cited sources. Perfect for research. Shows where every answer comes from.",fa:"موتور جستجوی هوش مصنوعی با منابع ذکرشده. برای تحقیق عالی است.",ps:"د منابعو سره د هوش مصنوعي لټون انجن. د تحقیق لپاره عالي."}, tag:"Cites Sources", url:"https://www.perplexity.ai"},
+{name:"You.com",      maker:"You.com",       cat:"research",icon:"🔭", bg:"#001420", ic:"#00c8a0", badge:"free",     bl:"Free",        desc:{en:"AI-powered search with multiple AI models. Free. Shows sources alongside AI answers clearly.",fa:"جستجوی مبتنی بر هوش مصنوعی با مدل‌های متعدد. رایگان. منابع را نشان می‌دهد.",ps:"د ډیرو هوش مصنوعي ماډلونو سره لټون. وړیا. منابع ښکاره کوي."}, tag:"Free Search", url:"https://you.com"},
+
+// IMAGE
+{name:"Bing Image Creator",maker:"Microsoft",cat:"image", icon:"🖼️", bg:"#000f28", ic:"#0078d4", badge:"free",     bl:"Free",        desc:{en:"DALL-E 3 image generation completely free. 15 fast credits daily. Just describe what you want.",fa:"تولید تصویر DALL-E 3 کاملاً رایگان. ۱۵ اعتبار سریع در روز.",ps:"DALL-E 3 انځور جوړول بالکل وړیا. ورځني ۱۵ چټک کریډیټونه."}, tag:"DALL-E 3 Free", url:"https://www.bing.com/images/create"},
+{name:"Adobe Firefly", maker:"Adobe",        cat:"image",  icon:"🔥",  bg:"#1a0800", ic:"#ff4400", badge:"freemium",bl:"25 Free/mo",  desc:{en:"Adobe's AI image generator. 25 free monthly generations. Commercial use allowed. Professional quality.",fa:"مولد تصویر هوش مصنوعی ادوبی. ۲۵ نسل رایگان ماهانه. کیفیت حرفه‌ای.",ps:"د ادوبي هوش مصنوعي انځور جوړوونکی. ۲۵ وړیا ماهانه جنریشنونه."}, tag:"Commercial OK", url:"https://firefly.adobe.com"},
+{name:"Canva AI",     maker:"Canva",         cat:"image",  icon:"✏️",  bg:"#00141a", ic:"#00c4cc", badge:"freemium",bl:"Free + Paid", desc:{en:"Design + AI in one place. Free tier includes image generation. Perfect for social media graphics.",fa:"طراحی و هوش مصنوعی در یک مکان. تولید تصویر رایگان. برای گرافیک شبکه اجتماعی.",ps:"ډیزاین + هوش مصنوعي یو ځای کې. وړیا انځور جوړول. د سوشل میډیا لپاره."}, tag:"Design + AI", url:"https://www.canva.com"},
+{name:"Ideogram",     maker:"Ideogram",      cat:"image",  icon:"💡",  bg:"#140014", ic:"#c084fc", badge:"free",     bl:"10 Free/day", desc:{en:"10 free AI images per day. Best AI for text inside images. Great for posters and graphics with words.",fa:"۱۰ تصویر هوش مصنوعی رایگان در روز. بهترین برای متن داخل تصویر.",ps:"ورځني ۱۰ وړیا هوش مصنوعي انځورونه. د انځورونو دننه د متن لپاره غوره."}, tag:"Best Text AI", url:"https://ideogram.ai"},
+{name:"Playground AI",maker:"Playground",   cat:"image",  icon:"🎭",  bg:"#0a0020", ic:"#8b5cf6", badge:"free",     bl:"100 Free/day",desc:{en:"100 free AI images every single day. No credit card. Multiple artistic styles to choose from.",fa:"۱۰۰ تصویر هوش مصنوعی رایگان هر روز. بدون کارت اعتباری.",ps:"هره ورځ ۱۰۰ وړیا هوش مصنوعي انځورونه. د کریډیټ کارتو پرته."}, tag:"100/Day Free", url:"https://playground.com"},
+
+// WRITING
+{name:"Grammarly",    maker:"Grammarly",     cat:"write",  icon:"✅",  bg:"#001a08", ic:"#15c39a", badge:"freemium",bl:"Free + Paid", desc:{en:"Grammar checker and writing assistant. Free tier covers all basic corrections. Works in browser.",fa:"بررسی گرامر و دستیار نوشتاری. نسخه رایگان تمام اصلاحات اساسی را پوشش می‌دهد.",ps:"ګرامر چیکر او د لیکلو مرستیال. وړیا نسخه ټولې اساسي سمونې پوښي."}, tag:"Grammar Fix", url:"https://www.grammarly.com"},
+{name:"QuillBot",     maker:"QuillBot",      cat:"write",  icon:"🪶",  bg:"#001428", ic:"#4a7aff", badge:"freemium",bl:"Free + Paid", desc:{en:"Paraphrasing tool and summarizer. Free tier available. Great for non-native English writers.",fa:"ابزار بازنویسی و خلاصه‌ساز. نسخه رایگان. عالی برای غیر انگلیسی‌زبانان.",ps:"پارافریزینګ وسیله او لنډیز جوړوونکی. وړیا نسخه. د غیر انګلیسي لیکوالانو لپاره."}, tag:"Paraphrase", url:"https://quillbot.com"},
+{name:"DeepL Write",  maker:"DeepL",         cat:"write",  icon:"🌍",  bg:"#000a1a", ic:"#0a63c2", badge:"free",     bl:"Free",        desc:{en:"Best-in-class AI translation and writing improvement. Supports Dari (Persian). Free to use.",fa:"بهترین ترجمه هوش مصنوعی و بهبود نوشتار. از دری پشتیبانی می‌کند. رایگان.",ps:"د ترجمې لپاره غوره هوش مصنوعي. د دري ملاتړ کوي. وړیا."}, tag:"Best Translate", url:"https://www.deepl.com/write"},
+
+// CODE
+{name:"GitHub Copilot",maker:"GitHub",      cat:"code",   icon:"🐙",  bg:"#080808", ic:"#e0e0e0", badge:"freemium",bl:"Free Tier",   desc:{en:"AI code completion inside VS Code. Free tier now available. Suggests entire functions as you type.",fa:"تکمیل کد هوش مصنوعی در VS Code. نسخه رایگان موجود. توابع کامل پیشنهاد می‌دهد.",ps:"د VS Code دننه هوش مصنوعي کوډ بشپړول. وړیا نسخه. بشپړ دندې وړاندې کوي."}, tag:"In VS Code", url:"https://github.com/features/copilot"},
+{name:"Replit AI",    maker:"Replit",        cat:"code",   icon:"💻",  bg:"#000a14", ic:"#f26207", badge:"freemium",bl:"Free + Paid", desc:{en:"Code in your browser with AI assistance. Free account includes AI features. Zero installation needed.",fa:"کدنویسی در مرورگر با کمک هوش مصنوعی. حساب رایگان شامل ویژگی‌های AI. بدون نصب.",ps:"د براوزر کې د هوش مصنوعي مرسته سره کوډنویسي. وړیا اکاونټ. نصب ته اړتیا نشته."}, tag:"No Install", url:"https://replit.com"},
+{name:"Phind",        maker:"Phind",         cat:"code",   icon:"⌨️",  bg:"#001428", ic:"#4a7aff", badge:"free",     bl:"Free",        desc:{en:"AI search engine built for developers. Free. Excellent answers with code examples for every question.",fa:"موتور جستجوی هوش مصنوعی برای توسعه‌دهندگان. رایگان. پاسخ‌های عالی با مثال کد.",ps:"د پرمهالونو لپاره هوش مصنوعي لټون انجن. وړیا. د کوډ مثالونو سره ښه ځوابونه."}, tag:"For Developers", url:"https://www.phind.com"},
+
+// VIDEO
+{name:"Runway Gen-3", maker:"Runway",        cat:"video",  icon:"🎬",  bg:"#0a0010", ic:"#a855f7", badge:"freemium",bl:"125 Free Cr.",desc:{en:"Professional AI video generation. 125 free credits on signup. Generate short videos from text or image.",fa:"تولید ویدیوی حرفه‌ای با هوش مصنوعی. ۱۲۵ اعتبار رایگان. ویدیوهای کوتاه از متن.",ps:"مسلکي هوش مصنوعي ویډیو جنریشن. ۱۲۵ وړیا کریډیټونه. د متن نه لنډ ویډیوګانې."}, tag:"Video Gen", url:"https://app.runwayml.com"},
+{name:"CapCut",       maker:"ByteDance",     cat:"video",  icon:"🎞️",  bg:"#000a14", ic:"#00c8e0", badge:"free",     bl:"Free",        desc:{en:"Video editor with powerful AI features. Free. Auto-subtitles, background removal, AI effects, templates.",fa:"ویرایشگر ویدیو با ویژگی‌های قدرتمند هوش مصنوعی. رایگان. زیرنویس خودکار.",ps:"د هوش مصنوعي ځانګړتیاوو سره ویډیو ایډیټر. وړیا. اتوماتیک ساب ټایټلونه."}, tag:"Video Edit", url:"https://www.capcut.com"},
+
+// VOICE & MUSIC
+{name:"ElevenLabs",  maker:"ElevenLabs",    cat:"voice",  icon:"🎙️",  bg:"#0a0a00", ic:"#f0c040", badge:"freemium",bl:"10K Free/mo", desc:{en:"AI voice generation. 10,000 free characters per month. Create speech in any language. Clone voices.",fa:"تولید صدای هوش مصنوعی. ۱۰,۰۰۰ کاراکتر رایگان در ماه. ایجاد گفتار به هر زبانی.",ps:"د هوش مصنوعي غږ جوړول. ۱۰,۰۰۰ وړیا حروف ماهانه. د هرې ژبې لپاره."}, tag:"Voice Clone", url:"https://elevenlabs.io"},
+{name:"Suno AI",     maker:"Suno",          cat:"voice",  icon:"🎵",  bg:"#0a0020", ic:"#c084fc", badge:"freemium",bl:"50 Free/day", desc:{en:"Create full songs with lyrics using AI. 50 free songs per day. Just describe the music you want.",fa:"ساخت آهنگ کامل با کلمات با هوش مصنوعی. ۵۰ آهنگ رایگان در روز.",ps:"د هوش مصنوعي سره بشپړ سندرې جوړول. ورځني ۵۰ وړیا سندرې."}, tag:"Make Music", url:"https://suno.com"},
+{name:"Udio",        maker:"Udio",          cat:"voice",  icon:"🎶",  bg:"#0a000f", ic:"#e879f9", badge:"freemium",bl:"Free Tier",   desc:{en:"AI music generator. High quality song creation. Free tier available. Rival to Suno with unique sound.",fa:"مولد موسیقی هوش مصنوعی. ساخت آهنگ با کیفیت بالا. نسخه رایگان موجود.",ps:"د هوش مصنوعي موسیقي جوړوونکی. لوړ کیفیت سندرې جوړول. وړیا نسخه."}, tag:"High Quality", url:"https://www.udio.com"},
+];
+
+// ── LANGUAGES ─────────────────────────────────────
+const LANGS = {
+en: {
+dir:"ltr",
+langBarText:"🇦🇫 Built for <span>Afghan communities</span> worldwide",
+navTagline:"AI for Afghan Communities",
+nl1:"All Tools", nl2:"How It Works", nl3:"Earn Money", nl4:"Launch Free",
+navCta:"Browse Free Tools →",
+heroBadge:"🇦🇫 Free AI Tools for Afghan Communities",
+heroLine1:"All AI,", heroLine2:"One Place",
+heroDari:"Claude · Gemini · ChatGPT · and more",
+heroSub:"Click any AI tool — go directly to its <strong>free version</strong>. No account needed here. No payment. Just pick your AI and start.",
+heroCta1:"Browse All Free Tools →", heroCta2:"How It Works",
+stat1:"Free AI Tools", stat2:"To Use", stat3:"Languages", stat4:"Afghan Speakers",
+toolsEyebrow:"26 Free Tools", toolsTitle:"Every Free AI Tool",
+toolsSub:"Click any card — opens the tool directly in a new tab. Free versions always shown first.",
+searchPh:"Search AI tools…",
+f0:"All", f1:"💬 Chat AI", f2:"🎨 Image AI", f3:"✍️ Writing", f4:"💻 Coding", f5:"🎬 Video", f6:"🎵 Music & Voice", f7:"🔬 Research",
+openTxt:"Open free →",
+howEyebrow:"Simple Process", howTitle:"How AIVA Works", howSub:"Three steps. No technical knowledge needed.",
+how1t:"Visit AIVA", how1d:"Come to AIVA — your one-stop directory for every free AI tool online. Bookmark it as your AI home.",
+how2t:"Find Your Tool", how2d:"Browse by category or search by name. Filter by Chat AI, Image AI, Writing, Coding, Video and more.",
+how3t:"Click & Use Free", how3d:"Click any card — opens Claude, ChatGPT, Gemini directly in a new tab. Use the free version instantly.",
+how4t:"Come Back", how4d:"We update the list weekly. New tools added every week so you never miss the latest AI.",
+earnEyebrow:"For Site Owner", earnTitle:"How You Earn Money", earnSub:"You don't build AI. You connect people to it. Here's how the money flows.",
+e1t:"Google AdSense", e1d:"Show ads on your directory. Every visitor earns you money automatically after setup.",
+e2t:"Affiliate Links", e2d:"Visitor upgrades to Claude Pro or ChatGPT Plus through your link — you earn commission.",
+e3t:"Featured Listings", e3d:"AI companies pay to be featured at the top of your directory as your traffic grows.",
+e4t:"Newsletter", e4d:"Collect emails. Send weekly 'Best AI Tools' newsletter. Sell sponsorships to AI companies.",
+revTitle:"📊 Realistic Revenue Timeline", revNote:"Conservative estimates",
+th1:"Period", th2:"Visitors/Month", th3:"AdSense", th4:"Affiliates", th5:"Total/Month",
+launchEyebrow:"Zero Investment", launchTitle:"Go Live This Weekend — Free", launchSub:"This file IS your complete website. Here is how to put it online for $0.",
+footerDesc:"Free AI tools directory for Afghan communities worldwide. All tools in one place.",
+footerDari:"AIVA — AI for Everyone ❤️",
+fc1:"Categories", fc2:"For Owners", fc3:"Top Tools",
+footerCopy:"© 2025 AIVA · Free forever · Built for Afghan communities",
+footerLove:"Made with ❤️ for 50M+ Afghan speakers",
+noResultsText:"No tools found", noResultsSub:"Try a different search term or category",
+stepCost:"Cost:",
+},
+fa: {
+dir:"rtl",
+langBarText:"🇦🇫 برای <span>جامعه افغان</span> در سراسر جهان",
+navTagline:"هوش مصنوعی برای هر افغان",
+nl1:"همه ابزارها", nl2:"چگونه کار می‌کند", nl3:"کسب درآمد", nl4:"شروع رایگان",
+navCta:"→ مشاهده ابزارهای رایگان",
+heroBadge:"🇦🇫 ابزارهای هوش مصنوعی رایگان برای جامعه افغان",
+heroLine1:"همه هوش مصنوعی،", heroLine2:"یک مکان",
+heroDari:"کلود · جمینای · چت‌جی‌پی‌تی · و بیشتر",
+heroSub:"روی هر ابزار هوش مصنوعی کلیک کنید — مستقیم به <strong>نسخه رایگان</strong> آن بروید. نیازی به حساب کاربری اینجا نیست.",
+heroCta1:"→ مشاهده همه ابزارهای رایگان", heroCta2:"چگونه کار می‌کند",
+stat1:"ابزار رایگان", stat2:"برای استفاده", stat3:"زبان", stat4:"افغانی‌زبان",
+toolsEyebrow:"۲۶ ابزار رایگان", toolsTitle:"هر ابزار هوش مصنوعی رایگان",
+toolsSub:"روی هر کارت کلیک کنید — مستقیم در تب جدید باز می‌شود. ابزارهای رایگان همیشه اول نشان داده می‌شوند.",
+searchPh:"جستجوی ابزارهای هوش مصنوعی…",
+f0:"همه", f1:"💬 چت هوش مصنوعی", f2:"🎨 تصویر هوش مصنوعی", f3:"✍️ نوشتار", f4:"💻 کدنویسی", f5:"🎬 ویدیو", f6:"🎵 موسیقی و صدا", f7:"🔬 تحقیق",
+openTxt:"→ باز کردن رایگان",
+howEyebrow:"فرآیند ساده", howTitle:"AIVA چگونه کار می‌کند", howSub:"سه مرحله. بدون نیاز به دانش فنی.",
+how1t:"بازدید از AIVA", how1d:"به AIVA بیایید — دایرکتوری یک‌جای شما برای هر ابزار هوش مصنوعی رایگان. آن را به عنوان خانه هوش مصنوعی خود نشانک‌گذاری کنید.",
+how2t:"ابزار خود را پیدا کنید", how2d:"بر اساس دسته‌بندی مرور کنید یا بر اساس نام جستجو کنید.",
+how3t:"کلیک و استفاده رایگان", how3d:"روی هر کارت کلیک کنید — کلود، چت‌جی‌پی‌تی یا جمینای را مستقیم در تب جدید باز می‌کند.",
+how4t:"برگردید", how4d:"ما لیست را هفتگی به‌روزرسانی می‌کنیم. ابزارهای جدید هر هفته اضافه می‌شوند.",
+earnEyebrow:"برای صاحب سایت", earnTitle:"چگونه درآمد کسب کنید", earnSub:"شما هوش مصنوعی نمی‌سازید. فقط مردم را به آن متصل می‌کنید.",
+e1t:"گوگل ادسنس", e1d:"تبلیغات در دایرکتوری خود نمایش دهید. هر بازدیدکننده به طور خودکار برای شما پول می‌آورد.",
+e2t:"لینک‌های وابسته", e2d:"بازدیدکننده از طریق لینک شما به Claude Pro ارتقا می‌یابد — شما کمیسیون می‌گیرید.",
+e3t:"آگهی‌های ویژه", e3d:"شرکت‌های هوش مصنوعی برای نمایش در بالای دایرکتوری شما پول می‌پردازند.",
+e4t:"خبرنامه", e4d:"ایمیل جمع‌آوری کنید. خبرنامه هفتگی بفرستید. تبلیغات را به شرکت‌های هوش مصنوعی بفروشید.",
+revTitle:"📊 جدول زمانی درآمد واقعی", revNote:"تخمین‌های محافظه‌کارانه",
+th1:"دوره", th2:"بازدید/ماه", th3:"ادسنس", th4:"کمیسیون", th5:"جمع/ماه",
+launchEyebrow:"بدون سرمایه‌گذاری", launchTitle:"این آخر هفته رایگان راه‌اندازی کنید", launchSub:"این فایل وب‌سایت کامل شماست. اینجا آمده است که چگونه آن را به صورت رایگان آنلاین کنید.",
+footerDesc:"دایرکتوری ابزارهای رایگان هوش مصنوعی برای جوامع افغان در سراسر جهان.",
+footerDari:"وا — هوش مصنوعی برای همه ❤️",
+fc1:"دسته‌بندی‌ها", fc2:"برای صاحبان", fc3:"ابزارهای برتر",
+footerCopy:"© ۲۰۲۵ AIVA · همیشه رایگان · برای جامعه افغان",
+footerLove:"با ❤️ برای ۵۰ میلیون افغانی‌زبان",
+noResultsText:"ابزاری پیدا نشد", noResultsSub:"عبارت جستجو یا دسته دیگری را امتحان کنید",
+stepCost:"هزینه:",
+},
+ps: {
+dir:"rtl",
+langBarText:"🇦🇫 د <span>افغان ټولنو</span> لپاره نړۍ کې",
+navTagline:"د هر افغان لپاره هوش مصنوعي",
+nl1:"ټولې وسیلې", nl2:"څنګه کار کوي", nl3:"عاید ترلاسه کول", nl4:"وړیا پیل کول",
+navCta:"→ وړیا وسیلې وګورئ",
+heroBadge:"🇦🇫 د افغان ټولنو لپاره وړیا هوش مصنوعي وسیلې",
+heroLine1:"ټول هوش مصنوعي،", heroLine2:"یو ځای",
+heroDari:"کلود · جمینای · چټ جي پي ټي · او نور",
+heroSub:"د هرې هوش مصنوعي وسیلې کارت کلیک کړئ — مستقیم <strong>وړیا نسخه</strong> ته لاړ شئ. دلته حساب ته اړتیا نشته.",
+heroCta1:"→ ټولې وړیا وسیلې وګورئ", heroCta2:"څنګه کار کوي",
+stat1:"وړیا هوش مصنوعي وسیلې", stat2:"د کارولو لپاره", stat3:"ژبې", stat4:"افغاني ویونکي",
+toolsEyebrow:"۲۶ وړیا وسیلې", toolsTitle:"هره وړیا هوش مصنوعي وسیله",
+toolsSub:"د هر کارت کلیک کولو سره — مستقیم نوي ټب کې خلاصیږي. وړیا نسخې تل لومړي ښودل کیږي.",
+searchPh:"د هوش مصنوعي وسیلو لټون…",
+f0:"ټول", f1:"💬 چټ هوش مصنوعي", f2:"🎨 انځور هوش مصنوعي", f3:"✍️ لیکل", f4:"💻 کوډنویسي", f5:"🎬 ویډیو", f6:"🎵 موسیقي او غږ", f7:"🔬 تحقیق",
+openTxt:"→ وړیا خلاص کړئ",
+howEyebrow:"ساده پروسه", howTitle:"AIVA څنګه کار کوي", howSub:"درې ګامونه. د تخنیکي پوهې ته اړتیا نشته.",
+how1t:"AIVA ته راشئ", how1d:"AIVA ته راشئ — ستاسو د هرې وړیا هوش مصنوعي وسیلې یو ځای لارښود. دا د خپل هوش مصنوعي کور ونیسئ.",
+how2t:"خپله وسیله پیدا کړئ", how2d:"د کټاګورۍ له مخې وګورئ یا د نوم له مخې لټون وکړئ.",
+how3t:"کلیک کړئ او وړیا وکاروئ", how3d:"د هر کارت کلیک کول — کلود، چټ جي پي ټي، یا جمینای مستقیم نوي ټب کې خلاصوي.",
+how4t:"بیرته راشئ", how4d:"موږ لیست هره اونۍ تازه کوو. هره اونۍ نوې وسیلې اضافه کیږي.",
+earnEyebrow:"د سایټ مالک لپاره", earnTitle:"تاسو څنګه عاید ترلاسه کوئ", earnSub:"تاسو هوش مصنوعي نه جوړوئ. یوازې خلک ورسره وصلوئ.",
+e1t:"ګوګل ادسنس", e1d:"خپل لارښود کې اشتهارات وښایئ. هر لیدونکی تاسو ته اتوماتیک پیسې راوړي.",
+e2t:"د انتسابي لینکونو", e2d:"لیدونکی ستاسو د لینک له لارې Claude Pro ته اپګریډ کوي — تاسو کمیشن ترلاسه کوئ.",
+e3t:"ځانګړي لیستونه", e3d:"د هوش مصنوعي شرکتونه ستاسو د لارښود په سر کې د ښودلو لپاره پیسې ورکوي.",
+e4t:"خبرنامه", e4d:"بریښنالیکونه راټول کړئ. هفتني خبرنامه واستوئ. د هوش مصنوعي شرکتونو ته سپانسرشپ وپلورئ.",
+revTitle:"📊 د عاید واقعي مهالویش", revNote:"محافظه‌کارانه اټکلونه",
+th1:"موده", th2:"لیدونکي/میاشت", th3:"ادسنس", th4:"کمیشن", th5:"ټول/میاشت",
+launchEyebrow:"سفر پرته", launchTitle:"دا اونۍ پای وړیا لانچ کړئ", launchSub:"دا فایل ستاسو بشپړ ویبسایټ دی. دلته دی چې دا $0 کې آنلاین کړئ.",
+footerDesc:"د نړۍ د افغان ټولنو لپاره د وړیا هوش مصنوعي وسیلو لارښود.",
+footerDari:"وا — د ټولو لپاره هوش مصنوعي ❤️",
+fc1:"کټاګورۍ", fc2:"د مالکانو لپاره", fc3:"غوره وسیلې",
+footerCopy:"© ۲۰۲۵ AIVA · تل وړیا · د افغان ولس لپاره",
+footerLove:"د ❤️ سره د ۵۰ میلیون افغاني ویونکو لپاره",
+noResultsText:"هیڅ وسیله ونه موندل شوه", noResultsSub:"بله لټون عبارت یا کټاګوري هڅه وکړئ",
+stepCost:"لګښت:",
+}
+};
+
+// ── REVENUE DATA ───────────────────────────────────
+const REVENUE = [
+{period:"Month 1–3",  visitors:"0 → 500",    adsense:"$0",         affiliate:"$0",        total:"$0",          note:"building"},
+{period:"Month 4–6",  visitors:"500 → 3K",   adsense:"$5–30",      affiliate:"$20–80",    total:"$25–110",     note:"first income"},
+{period:"Month 7–12", visitors:"3K → 15K",   adsense:"$30–150",    affiliate:"$100–400",  total:"$130–550",    note:"growing"},
+{period:"Year 2",     visitors:"15K → 80K",  adsense:"$150–800",   affiliate:"$400–2K",   total:"$550–2,800",  note:"consistent"},
+{period:"Year 3",     visitors:"80K → 300K", adsense:"$800–3K",    affiliate:"$2K–8K",    total:"$2,800–11K",  note:"scaled"},
+];
+
+// ── LAUNCH STEPS ───────────────────────────────────
+const STEPS = [
+{n:"1", color:"var(–gold)",  title:"Download This File",     desc:'Save this page as <strong style="color:var(–goldL)">index.html</strong> on your computer. That is your entire website — one file, zero setup needed.',  cost:"$0"},
+{n:"2", color:"var(–green)", title:"Create Free GitHub Account", desc:'Go to <a href="https://github.com" target="_blank">github.com</a> → Sign up free → Create repository named exactly: <strong style="color:var(–goldL)">yourusername.github.io</strong> → Upload your index.html file.', cost:"$0 · Domain: yourusername.github.io"},
+{n:"3", color:"var(–blue)",  title:"Enable GitHub Pages",    desc:"In your repo: Settings → Pages → Source: Deploy from branch → main → Save. Wait 2 minutes. Your site is <strong style=&quot;color:var(–green)&quot;>LIVE</strong>.",  cost:"$0 · Live in 2 minutes"},
+{n:"4", color:"#a855f7",      title:"OR Use Vercel (Better)", desc:'Go to <a href="https://vercel.com" target="_blank">vercel.com</a> → Sign up free → Connect GitHub repo → Deploy. Your site goes live at <strong style="color:var(–goldL)">yourproject.vercel.app</strong> — looks more professional.', cost:"$0 · More professional URL"},
+{n:"5", color:"var(–gold)",  title:"Apply for Google AdSense", desc:'Go to <a href="https://adsense.google.com" target="_blank">adsense.google.com</a> → Sign up → Add your site URL → Wait for approval (1–2 weeks). Paste their code into your HTML and start earning from every visitor.', cost:"$0 · Earn after approval"},
+{n:"6", color:"var(–green)", title:"Share in Afghan Communities", desc:"Post in Afghan Facebook groups: Afghans in Germany, Afghan Professionals Worldwide. Post on r/Afghanistan on Reddit. Make a TikTok showing the site. First 1,000 visitors come from your community.", cost:"$0 · Your first real traffic"},
+{n:"7", color:"var(–goldL)", title:"Buy Domain When You Earn First $12", desc:'Once AdSense pays you $12, go to <a href="https://namecheap.com" target="_blank">namecheap.com</a> → buy aiva.co or aivaai.com → point it to your host. Now you have a professional domain.', cost:"$12/year · Only when earning"},
+];
+
+// ── STATE ──────────────────────────────────────────
+let currentLang = 'en';
+let currentFilter = 'all';
+
+// ── SET LANGUAGE ───────────────────────────────────
+function setLang(lang) {
+currentLang = lang;
+const L = LANGS[lang];
+
+// Direction
+document.documentElement.dir = L.dir;
+document.documentElement.lang = lang;
+
+// Active button
+document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+document.querySelector(`[onclick=&quot;setLang(&#x27;${lang}&#x27;)&quot;]`).classList.add('active');
+
+// Update all text
+const set = (id, html) => { const el = document.getElementById(id); if(el) el.innerHTML = html; };
+const setTxt = (id, txt) => { const el = document.getElementById(id); if(el) el.textContent = txt; };
+
+set('langBarText', L.langBarText);
+setTxt('navTagline', L.navTagline);
+setTxt('nl1',L.nl1); setTxt('nl2',L.nl2); setTxt('nl3',L.nl3); setTxt('nl4',L.nl4);
+setTxt('navCta', L.navCta);
+setTxt('heroBadge', L.heroBadge);
+setTxt('heroLine1', L.heroLine1);
+setTxt('heroLine2', L.heroLine2);
+setTxt('heroDari', L.heroDari);
+set('heroSub', L.heroSub);
+setTxt('heroCta1', L.heroCta1); setTxt('heroCta2', L.heroCta2);
+setTxt('stat1',L.stat1); setTxt('stat2',L.stat2); setTxt('stat3',L.stat3); setTxt('stat4',L.stat4);
+setTxt('toolsEyebrow',L.toolsEyebrow); setTxt('toolsTitle',L.toolsTitle); setTxt('toolsSub',L.toolsSub);
+document.getElementById('searchInput').placeholder = L.searchPh;
+['f0','f1','f2','f3','f4','f5','f6','f7'].forEach((id,i) => setTxt(id, L[id]));
+setTxt('howEyebrow',L.howEyebrow); setTxt('howTitle',L.howTitle); setTxt('howSub',L.howSub);
+setTxt('how1t',L.how1t); setTxt('how1d',L.how1d);
+setTxt('how2t',L.how2t); setTxt('how2d',L.how2d);
+setTxt('how3t',L.how3t); setTxt('how3d',L.how3d);
+setTxt('how4t',L.how4t); setTxt('how4d',L.how4d);
+setTxt('earnEyebrow',L.earnEyebrow); setTxt('earnTitle',L.earnTitle); setTxt('earnSub',L.earnSub);
+setTxt('e1t',L.e1t); setTxt('e1d',L.e1d);
+setTxt('e2t',L.e2t); setTxt('e2d',L.e2d);
+setTxt('e3t',L.e3t); setTxt('e3d',L.e3d);
+setTxt('e4t',L.e4t); setTxt('e4d',L.e4d);
+setTxt('revTitle',L.revTitle); setTxt('revNote',L.revNote);
+setTxt('th1',L.th1); setTxt('th2',L.th2); setTxt('th3',L.th3); setTxt('th4',L.th4); setTxt('th5',L.th5);
+setTxt('launchEyebrow',L.launchEyebrow); setTxt('launchTitle',L.launchTitle); setTxt('launchSub',L.launchSub);
+setTxt('footerDesc',L.footerDesc); setTxt('footerDari',L.footerDari);
+setTxt('fc1',L.fc1); setTxt('fc2',L.fc2); setTxt('fc3',L.fc3);
+setTxt('footerCopy',L.footerCopy); setTxt('footerLove',L.footerLove);
+
+renderTools();
+renderRevenue();
+renderSteps();
+}
+
+// ── FILTER ─────────────────────────────────────────
+function setFilter(btn, cat) {
+document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+btn.classList.add('active');
+currentFilter = cat;
+renderTools();
+}
+
+// ── RENDER TOOLS ───────────────────────────────────
+function renderTools() {
+const L = LANGS[currentLang];
+const q = document.getElementById('searchInput').value.toLowerCase();
+const grid = document.getElementById('toolsGrid');
+
+const filtered = TOOLS.filter(t => {
+const matchCat = currentFilter === 'all' || t.cat === currentFilter;
+const desc = t.desc[currentLang] || t.desc.en;
+const matchQ = !q || t.name.toLowerCase().includes(q) || t.maker.toLowerCase().includes(q) || desc.toLowerCase().includes(q);
+return matchCat && matchQ;
+});
+
+if (!filtered.length) {
+grid.innerHTML = `&lt;div class=&quot;no-results&quot;&gt; &lt;div class=&quot;no-results-icon&quot;&gt;🔍&lt;/div&gt; &lt;div class=&quot;no-results-text&quot;&gt;${L.noResultsText}&lt;/div&gt; &lt;div class=&quot;no-results-sub&quot;&gt;${L.noResultsSub}&lt;/div&gt; &lt;/div&gt;`;
+return;
+}
+
+grid.innerHTML = filtered.map(t => {
+const desc = t.desc[currentLang] || t.desc.en;
+return ` &lt;a class=&quot;tool-card&quot; href=&quot;${t.url}&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; style=&quot;--ac:${t.ic}&quot;&gt; &lt;div class=&quot;card-top&quot;&gt; &lt;div class=&quot;card-icon&quot; style=&quot;background:${t.bg};border-color:${t.ic}25;&quot;&gt; &lt;span style=&quot;color:${t.ic};font-size:24px&quot;&gt;${t.icon}&lt;/span&gt; &lt;/div&gt; &lt;span class=&quot;card-badge badge-${t.badge}&quot;&gt;${t.bl}&lt;/span&gt; &lt;/div&gt; &lt;div class=&quot;card-name&quot;&gt;${t.name}&lt;/div&gt; &lt;div class=&quot;card-maker&quot;&gt;by ${t.maker}&lt;/div&gt; &lt;div class=&quot;card-desc&quot;&gt;${desc}&lt;/div&gt; &lt;div class=&quot;card-footer&quot;&gt; &lt;span class=&quot;card-tag&quot; style=&quot;background:${t.ic}15;color:${t.ic};border:1px solid ${t.ic}28&quot;&gt;${t.tag}&lt;/span&gt; &lt;span class=&quot;card-open&quot;&gt; &lt;span&gt;${L.openTxt}&lt;/span&gt; &lt;span class=&quot;card-arrow&quot;&gt;→&lt;/span&gt; &lt;/span&gt; &lt;/div&gt; &lt;/a&gt;`;
+}).join('');
+}
+
+// ── RENDER REVENUE ─────────────────────────────────
+function renderRevenue() {
+const tbody = document.getElementById('revBody');
+if (!tbody) return;
+const colors = ['var(–muted)','var(–soft)','var(–soft)','var(–goldL)','var(–goldL)'];
+tbody.innerHTML = REVENUE.map((r,i) => `&lt;tr&gt; &lt;td class=&quot;td-period&quot;&gt;${r.period}&lt;/td&gt; &lt;td class=&quot;td-muted&quot;&gt;${r.visitors}&lt;/td&gt; &lt;td class=&quot;td-muted&quot;&gt;${r.adsense}&lt;/td&gt; &lt;td class=&quot;td-muted&quot;&gt;${r.affiliate}&lt;/td&gt; &lt;td class=&quot;td-earn&quot; style=&quot;color:${colors[i]};font-size:${i&gt;2?&#x27;16px&#x27;:&#x27;14px&#x27;}&quot;&gt;${r.total}&lt;/td&gt; &lt;/tr&gt;`).join('');
+}
+
+// ── RENDER STEPS ───────────────────────────────────
+function renderSteps() {
+const wrap = document.getElementById('stepsWrap');
+const L = LANGS[currentLang];
+if (!wrap) return;
+wrap.innerHTML = STEPS.map(s => `&lt;div class=&quot;step-card fade-up show&quot;&gt; &lt;div class=&quot;step-n&quot; style=&quot;color:${s.color}30&quot;&gt;${s.n}&lt;/div&gt; &lt;div&gt; &lt;div class=&quot;step-line&quot; style=&quot;background:linear-gradient(90deg,${s.color},transparent)&quot;&gt;&lt;/div&gt; &lt;div class=&quot;step-title&quot;&gt;${s.title}&lt;/div&gt; &lt;div class=&quot;step-desc&quot;&gt;${s.desc}&lt;/div&gt; &lt;span class=&quot;step-pill&quot;&gt;${L.stepCost} ${s.cost}&lt;/span&gt; &lt;/div&gt; &lt;/div&gt;`).join('');
+}
+
+// ── SCROLL ANIMATION ───────────────────────────────
+const observer = new IntersectionObserver(entries => {
+entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+}, { threshold: 0.08 });
+function observeAll() {
+document.querySelectorAll('.fade-up:not(.show)').forEach(el => observer.observe(el));
+}
+
+// ── NAVBAR SCROLL ──────────────────────────────────
+window.addEventListener('scroll', () => {
+document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+document.querySelectorAll('.fade-up:not(.show)').forEach(el => {
+if (el.getBoundingClientRect().top < window.innerHeight - 60) el.classList.add('show');
+});
+});
+
+// ── SMOOTH SCROLL ──────────────────────────────────
+function scrollTo(id) {
+document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ── HAMBURGER ──────────────────────────────────────
+function toggleMenu() {
+const nl = document.getElementById('navLinks');
+nl.style.display = nl.style.display === 'flex' ? 'none' : 'flex';
+nl.style.flexDirection = 'column';
+nl.style.position = 'absolute';
+nl.style.top = '106px';
+nl.style.left = '0'; nl.style.right = '0';
+nl.style.background = 'rgba(4,5,12,0.98)';
+nl.style.padding = '16px';
+nl.style.borderBottom = '1px solid var(–border)';
+nl.style.backdropFilter = 'blur(20px)';
+}
+
+// ── INIT ───────────────────────────────────────────
+setLang('en');
+observeAll();
+</script>
+</body>
+</html>
+</textarea>
+
+<div class="box">
+  <div class="step">1. Click inside the <strong>box above</strong></div>
+  <div class="step">2. Press <strong>Ctrl + A</strong> on keyboard</div>
+  <div class="step">3. Press <strong>Ctrl + C</strong> on keyboard</div>
+  <div class="step">4. Go to GitHub empty text box → <strong>Ctrl + V</strong></div>
+  <div class="step">5. Filename: <strong>index.html</strong></div>
+  <div class="step">6. Click <strong>Commit changes</strong> ✅</div>
+</div>
+</body>
+</html>
